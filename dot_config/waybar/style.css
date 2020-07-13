@@ -54,7 +54,7 @@ window#waybar.chromium {
 }
 
 #workspaces button.focused {
-    background-color: rgba(66, 135, 245, 1);
+    background-color: rgba(41, 128, 185, 1);
     /*border-bottom: 3px solid #ffffff;*/
 }
 
