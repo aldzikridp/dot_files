@@ -16,6 +16,8 @@
     "battery": {
     "bat": "BAT0",
     "format":"{capacity}% {icon}",
+    "format-charging":"{capacity}% {icon}",
+    "format-plugged":"{capacity}% {icon}",
     "format-icons": ["", "", "", "", ""]
     },
 
