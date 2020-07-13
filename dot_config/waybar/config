@@ -1,0 +1,38 @@
+{
+    // "layer": "top", // Waybar at top layer
+    // "position": "bottom", // Waybar position (top|bottom|left|right)
+    "height": 25, // Waybar height (to be removed for auto height)
+    // "width": 1280, // Waybar width
+    // Choose the order of the modules
+    "modules-left": ["sway/workspaces"],
+    "modules-center": ["sway/window"],
+    "modules-right": ["sway/mode","network","pulseaudio","battery","clock"],
+
+    "clock": {
+     "format": "{:%Y/%m/%d %H:%M}",
+     "format-alt":"{:%Y-%m-%d}"
+    },
+
+    "battery": {
+    "bat": "BAT0",
+    "format":"{capacity}% {icon}",
+    "format-icons": ["", "", "", "", ""]
+    },
+
+    "network": {
+    "format-wifi":"{ipaddr}@{essid} ({signalStrength}%)",
+    "format-ethernet":"{ifname}: {ipaddr}/{cidr}",
+    "format-disconnected":"Disconnected ⚠"
+    },
+       "pulseaudio": {
+        //"scroll-step": 1,
+        "format": "{volume}% {icon}",
+        "format-muted": "",
+        "format-icons": {
+            "headphones": "",
+            "default": ["", ""]
+        },
+        "on-click": "pavucontrol"
+    }
+    }
+
