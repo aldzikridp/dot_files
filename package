@@ -26,4 +26,9 @@ wl-clipboard
 wofi
 youtube-dl
 mupdf
-bashmount
+libnotify
+mpd
+ncmpcpp
+nodejs
+udiskie
+
