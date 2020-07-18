@@ -1,0 +1,8 @@
+max-visible=2
+default-timeout=5000
+anchor=bottom-right
+font=Roboto 10
+background-color=#e4e4e4
+text-color=#152137
+border-size=2
+border-color=#d4809f

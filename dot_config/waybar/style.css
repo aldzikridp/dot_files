@@ -2,70 +2,57 @@
     border: none;
     border-radius: 0;
     /* `otf-font-awesome` is required to be installed for icons */
-    font-family: Roboto, Helvetica, Arial, sans-serif;
+    font-family: RobotoMono;
     font-size: 13px;
     min-height: 0;
 }
 
 window#waybar {
-    /*background-color: rgba(43, 48, 59, 0.5);*/
-    background-color: #000000;
-    /* border-bottom: 3px solid rgba(100, 114, 125, 0.5); */
-    color: #ffffff;
+    background-color: rgba(212, 128, 159, 1);
+    color: rgba(228, 228, 228, 1);
     transition-property: background-color;
     transition-duration: .5s;
 }
 
+/*
 window#waybar.hidden {
     opacity: 0.2;
 }
 
-
 window#waybar.empty {
-    background-color: rgba(43, 48, 59, 0.5);
-    /*border-bottom: 3px solid rgba(43, 48, 59, 0.5);*/
+    background-color: transparent;
 }
 window#waybar.solo {
-    background-color: #000000;
-    border-bottom: none;
+    background-color: #FFFFFF;
 }
-
-
-window#waybar.termite {
-    background-color: #3F3F3F;
-}
-
-window#waybar.chromium {
-    background-color: #000000;
-    border: none;
-}
+*/
 
 #workspaces button {
     padding: 0 5px;
-    background-color: transparent;
     color: #ffffff;
     border-bottom: 3px solid transparent;
 }
 
 /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
 #workspaces button:hover {
-    background: rgba(0, 0, 0, 0.2);
+    background: rgba(212, 128, 159, 1);
     box-shadow: inherit;
-    border-bottom: 3px solid #ffffff;
+    text-shadow: inherit;
+    border-bottom: 3px solid rgba(228, 228, 228, 1);
 }
 
 #workspaces button.focused {
-    background-color: rgba(41, 128, 185, 1);
-    /*border-bottom: 3px solid #ffffff;*/
+    background-color: rgba(228, 228, 228, 1);
+    color: rgba(21, 33, 55, 1);
 }
 
 #workspaces button.urgent {
-    background-color: #eb4d4b;
+    background-color: rgba(255, 0, 0, 1);
 }
 
 #mode {
-    background-color: #64727D;
-    border-bottom: 3px solid #ffffff;
+    background-color: rgba(212, 128, 159, 1);
+    border-bottom: 3px solid rgba(228, 228, 228, 1);
 }
 
 #clock,
@@ -83,11 +70,7 @@ window#waybar.chromium {
 #mpd {
     padding: 0 10px;
     margin: 0 4px;
-    color: #ffffff;
-}
-
-#clock {
-    background-color: #64727D;
+    color: rgba(228, 228, 228, 1);
 }
 
 #battery {
@@ -135,21 +118,18 @@ label:focus {
 }
 
 #network {
-    background-color: #2980b9;
+    color: rgba(228, 228, 228, 1);
 }
 
 #network.disconnected {
-    background-color: #f53c3c;
-}
-
-#pulseaudio {
-    background-color: #f1c40f;
-    color: #000000;
+    background-color: #ff0000;
+    background-color: rgba(228, 228, 228, 1);
+    color: rgba(21, 33, 55, 1);
 }
 
 #pulseaudio.muted {
-    background-color: #90b1b1;
-    color: #2a5c45;
+    background-color: rgba(228, 228, 228, 1);
+    color: rgba(21, 33, 55, 1);
 }
 
 #custom-media {
@@ -174,32 +154,16 @@ label:focus {
     background-color: #eb4d4b;
 }
 
-#tray {
-    background-color: #2980b9;
-}
 
-#idle_inhibitor {
-    background-color: #2d3436;
-}
 
 #idle_inhibitor.activated {
     background-color: #ecf0f1;
     color: #2d3436;
 }
 
-#mpd {
-    background-color: #66cc99;
-    color: #2a5c45;
-}
 
 #mpd.disconnected {
-    background-color: #f53c3c;
+    background-color: rgba(228, 228, 228, 1);
+    color: rgba(21, 33, 55, 1);
 }
 
-#mpd.stopped {
-    background-color: #90b1b1;
-}
-
-#mpd.paused {
-    background-color: #51a37a;
-}

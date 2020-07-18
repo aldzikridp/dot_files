@@ -3,11 +3,14 @@
 # Copy this to ~/.config/sway/config and edit it to your liking.
 #
 # Read `man 5 sway` for a complete reference.
+# Start this program
+exec mako
+exec udiskie
+exec mpd
 
 ### Variables
 #
 # Logo key. Use Mod1 for Alt.
-exec mako
 set $mod Mod4
 # Home row direction keys, like vim
 set $left h
@@ -24,7 +27,8 @@ set $menu wofi --show run
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /usr/share/backgrounds/default.png fill
+#output * bg /usr/share/backgrounds/default.png fill
+output * bg ~/.config/sway/wallpaper.jpg fill
 #
 # Example configuration:
 #
@@ -66,6 +70,9 @@ output * bg /usr/share/backgrounds/default.png fill
 #
     # Start a terminal
     bindsym $mod+Return exec $term
+    
+    # Start floating terminal
+    bindsym $mod+Shift+Return exec $term --class="termfloat"
 
     # Kill focused window
     bindsym $mod+Shift+q kill
@@ -199,10 +206,15 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # Disable titlebar
-default_border none
+default_border pixel 5
 
 # Disable border
-hide_edge_borders --i3 smart
+#hide_edge_borders --i3 smart
+smart_borders on
+
+client.focused #d4809f #d4809f #d4809f #d4809f
+client.unfocused #00000000 #00000000 #00000000 #00000000
+client.focused_inactive #f1c40f #f1c40f #f1c40f #f1c40f
 
 # Set gaps
 gaps inner 10
@@ -212,6 +224,10 @@ smart_gaps on
 
 #Set float on pavucontrol
 for_window [app_id="pavucontrol"] floating enable
+for_window [app_id="keepassxc"] floating enable
+for_window [app_id="mpv"] floating enable
+for_window [app_id="termfloat"] floating enable
+for_window [title="Choose file"] floating enable
 
 set $volumestep 5
 # Using pulseaudio-utils (append "-s $sinkname" without quotes to override default sink)
