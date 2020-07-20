@@ -32,3 +32,6 @@ ncmpcpp
 nodejs
 udiskie
 imv
+jq
+swaylock
+swayidle
