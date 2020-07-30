@@ -45,7 +45,7 @@ output * bg ~/.config/sway/wallpaper.jpg fill
           timeout 600 '~/.config/sway/lock.sh' \
           timeout 900 'swaymsg "output * dpms off"' \
                resume 'swaymsg "output * dpms on"' \
-          before-sleep '~/.config/sway/lock.sh'
+          before-sleep 'swaylock -f -s fill -i /tmp/screen.png'
 
 ### Input configuration
 #
@@ -219,7 +219,7 @@ gaps outer 0
 #Set color for titlebar (titlebar always appear when in tabbed and stacked mode)
 client.focused #FFFFFFFF #FFFFFFFF #000000FF
 client.focused_inactive #FFFFFFB3 #FFFFFFB3 #000000FF
-client.unfocused #000000B3 #000000B3 #FFFFFFFF
+client.unfocused #000000B3 #000000B3 #FFFFFF66
 
 #Set float on pavucontrol
 for_window [app_id="pavucontrol"] floating enable
