@@ -10,10 +10,10 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'tomasiser/vim-code-dark'
 Plug 'sheerun/vim-polyglot'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-"Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 """"""""""" Plugin outside ~/.vim/plugged with post-update hook
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+"""Always put vim-devicons as last loaded plugin
 Plug 'ryanoasis/vim-devicons'
 call plug#end()
 """""""""""""""""option for coc.nvim"""""""""""""
@@ -162,10 +162,6 @@ nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-"""""""""""Vim-hexokinase""""""""""""""""""
-
-"let g:Hexokinase_highlighters = ['backgroundfull']
-
 """""""""""""highlight current line"""""""""
 set cursorline
 
@@ -178,7 +174,6 @@ syntax on
 """""""""""""Colorscheme settings""""""""""""""
 colorscheme codedark
 set termguicolors
-let &t_ut=''
 
 """""""""numbering type"""""""""
 set relativenumber
@@ -186,10 +181,10 @@ set relativenumber
 """"""""""Vim airline options"""""""""""""
 let g:airline_theme='codedark'
 let g:airline#extensions#tabline#enabled = 1
-"enable > shape in vim-airline
+""" enable > shape in vim-airline
 "let g:airline_powerline_fonts = 1
 
-" Dont show mode, since I use powerline (vim-airline) anyway
+" Dont show mode, since I use vim-airline anyway
 set noshowmode
 
 " Sets how many lines of history VIM has to remember
@@ -258,7 +253,7 @@ set t_vb=
 set tm=500
 
 " Add a bit extra margin to the left
-set foldcolumn=1
+"set foldcolumn=1
 
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=UTF-8
@@ -287,7 +282,7 @@ set smarttab
 set shiftwidth=4
 set tabstop=4
 
-" Linebreak on 500 characters
+" Linebreak on 120 characters
 set lbr
 set textwidth=120
 
@@ -301,7 +296,7 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 """"""""""""""""""""""""""""""
 " => Status line
 """"""""""""""""""""""""""""""
-" Always show the status line
+" Always show the status line (vim-airline is statusline)
 set laststatus=2
 
 " Delete trailing white space on save, useful for some filetypes ;)
