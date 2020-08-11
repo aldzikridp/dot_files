@@ -6,4 +6,7 @@ if [ -f ~/.bashrc ]; then
 fi
 
 # User specific environment and startup programs
-export GDK_BACKEND=wayland
+export VISUAL=nvim
+export EDITOR=nvim
+export MOZ_ENABLE_WAYLAND=1
+export QT_QPA_PLATFORM=wayland-egl
