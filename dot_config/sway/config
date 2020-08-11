@@ -1,7 +1,3 @@
-# Default config for sway
-#
-# Copy this to ~/.config/sway/config and edit it to your liking.
-#
 # Read `man 5 sway` for a complete reference.
 # Start this program
 exec mako
@@ -20,7 +16,7 @@ set $down j
 set $up k
 set $right l
 # Your preferred terminal emulator
-set $term kitty
+set $term exec kitty
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
@@ -45,7 +41,7 @@ output * bg ~/.config/sway/wallpaper.jpg fill
           timeout 600 '~/.config/sway/lock.sh' \
           timeout 900 'swaymsg "output * dpms off"' \
                resume 'swaymsg "output * dpms on"' \
-          before-sleep 'swaylock -f -s fill -i /tmp/screen.png'
+          before-sleep '~/.config/sway/lock.sh'
 
 ### Input configuration
 #
@@ -62,18 +58,19 @@ output * bg ~/.config/sway/wallpaper.jpg fill
 # Read `man 5 sway-input` for more information about this section.
 
 ### Border
-default_border none
-default_floating_border none
+default_border pixel 3
+default_floating_border pixel 3
+smart_borders on
 
 ### Key bindings
 #
 # Basics:
 #
     # Start a terminal
-    bindsym $mod+Return exec $term --single-instance --wait-for-single-instance-window-close --instance-group=terminal
+    bindsym $mod+Return $term
 
     # Start floating terminal
-    bindsym $mod+Shift+Return exec $term --single-instance --wait-for-single-instance-window-close --instance-group=terminal --class="termfloat"
+    bindsym $mod+Shift+Return $term --class="termfloat"
 
     # Kill focused window
     bindsym $mod+Shift+q kill
@@ -210,25 +207,27 @@ bindsym $mod+r mode "resize"
 bindsym $mod+Ctrl+l exec ~/.config/sway/lock.sh
 
 # Launch neovim
-bindsym $mod+Shift+v exec $term --single-instance --wait-for-single-instance-window-close --instance-group=nvim --class="nvim" --title="nvim" -o=background_opacity=1 nvim
+bindsym $mod+Shift+v exec $term -o background_opacity=1 nvim
+
+# Launch ncmpcpp (with some eyecandy obviously)
+bindsym $mod+Shift+m exec kitty -o allow_remote_control=yes -o enabled_layouts=horizontal -o window_border_width=0 -o window_padding_width=3 .config/ncmpcpp/musics.sh
 
 # Set gaps
 gaps inner 10
 gaps outer 0
 
 #Set color for titlebar (titlebar always appear when in tabbed and stacked mode)
-client.focused #FFFFFFFF #FFFFFFFF #000000FF
-client.focused_inactive #FFFFFFB3 #FFFFFFB3 #000000FF
-client.unfocused #000000B3 #000000B3 #FFFFFF66
+client.focused #FFFFFFFF #FFFFFFFF #000000FF #FFFFFFFF
+client.focused_inactive #FFFFFFB3 #FFFFFFB3 #000000FF #FFFFFFB3
+client.unfocused #000000B3 #000000B3 #FFFFFF66 #000000B3
 
 #Set float on pavucontrol
 for_window [app_id="pavucontrol"] floating enable
 for_window [app_id="keepassxc"] floating enable
 for_window [app_id="mpv"] floating enable
 for_window [app_id="termfloat"] floating enable
-for_window [title="Choose file"] floating enable
+for_window [app_id="xdg-desktop-portal-gtk"] floating enable
 
-set $volumestep 5
 # Using pulseaudio-utils (append "-s $sinkname" without quotes to override default sink)
 
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +1%

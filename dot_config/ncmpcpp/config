@@ -10,6 +10,7 @@ visualizer_type = "wave"
 visualizer_output_name = "my_fifo"
 visualizer_look = "│┃"
 visualizer_color = "default"
+visualizer_sync_interval = "10"
 
 [header]
 header_visibility = "no"
@@ -19,13 +20,13 @@ state_line_color = "black"
 
 [playlist]
 playlist_display_mode = "classic"
-song_list_format = "{{%a - %t}|{%f}}{$R%l}"
+song_list_format = "{{%t}|{%f}}{$R%a}"
 now_playing_prefix = "$b$2"
 now_playing_suffix = "$/b$9"
 
 [statusbar]
-progressbar_look = "─╼ "
-progressbar_color = "white"
+progressbar_look = "▃▃ "
+progressbar_elapsed_color = "white"
 statusbar_visibility = "no"
 statusbar_color = "default"
 song_status_format = "{{%a{ - %t}}|{ - %f}{ - %b{ (%y)}}}"
@@ -40,3 +41,5 @@ main_window_color = "default"
 centered_cursor = "yes"
 enable_window_title = "yes"
 external_editor = "nvim"
+
+execute_on_song_change = "~/.config/ncmpcpp/musics.sh get"
