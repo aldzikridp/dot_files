@@ -3,6 +3,7 @@ NetworkManager-tui
 NetworkManager-wifi
 brightnessctl
 firefox
+ffmpeg
 htop
 imv
 iwl7260-firmware
@@ -11,6 +12,7 @@ kitty
 libnotify
 mako
 mesa-dri-drivers
+mpc
 mpd
 mpv
 ncmpcpp
@@ -32,4 +34,4 @@ waybar
 wl-clipboard
 wofi
 youtube-dl
-zathura-mupdf
+zathura-pdf-mupdf
