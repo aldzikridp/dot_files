@@ -5,6 +5,7 @@ brightnessctl
 firefox
 ffmpeg
 htop
+ImageMagick
 imv
 iwl7260-firmware
 jq
@@ -24,6 +25,7 @@ pulseaudio-utils
 python3-neovim
 python3-pillow
 ranger
+rpmconf
 slurp
 sway
 swayidle
