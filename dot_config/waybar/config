@@ -1,7 +1,7 @@
 {
     // "layer": "top", // Waybar at top layer
      "position": "bottom", // Waybar position (top|bottom|left|right)
-     "height": 40, // Waybar width
+     "height": 39, // Waybar width
     // Choose the order of the modules
     "modules-left": ["tray", "sway/mode"],
     "modules-center": ["sway/workspaces"],

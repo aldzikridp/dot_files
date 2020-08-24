@@ -247,6 +247,11 @@ bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
 # Select area
 bindsym Print exec grim -g "$(slurp)" ~/Pictures/$(date +'%Y-%m-%d-%H%M%S_Screenshot.png')
 
+## Screenrecord
+bindsym Ctrl+Print exec wf-recorder -f ~/Videos/$(date +"%Y-%m-%d_%H:%M:%S_Screenrecord.mp4")
+bindsym Ctrl+Shift+Print exec wf-recorder -g "$$(slurp)" -f ~/Videos/$(date +"%Y-%m-%d_%H:%M:%S_Screenrecord.mp4")
+bindsym Ctrl+Shift+BackSpace exec killall -s SIGINT wf-recorder
+
 bar {
     swaybar_command waybar
 }

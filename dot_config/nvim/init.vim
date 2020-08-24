@@ -28,9 +28,6 @@ let g:coc_global_extensions = ['coc-json',
     \ 'coc-highlight',
     \ 'coc-css']
 
-" TextEdit might fail if hidden is not set.
-set hidden
-
 " Some servers have issues with backup files, see #649.
 set nowritebackup
 
@@ -221,7 +218,7 @@ set ruler
 set cmdheight=2
 
 " A buffer becomes hidden when it is abandoned
-set hid
+set hidden
 
 " Ignore case when searching
 set ignorecase
