@@ -13,6 +13,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 """"""""""" Plugin outside ~/.vim/plugged with post-update hook
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'jaxbot/semantic-highlight.vim'
 """Always put vim-devicons as last loaded plugin
 Plug 'ryanoasis/vim-devicons'
 call plug#end()

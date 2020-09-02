@@ -3,6 +3,12 @@
 exec mako
 exec udiskie
 exec mpd
+# Pulse usually doesn't detect plugged headphone
+# so config file must deleted and run pulse
+exec '~/.config/sway/pulse-restart.sh'
+
+# Disable xwayland
+xwayland disable
 
 ### Variables
 #
@@ -47,7 +53,7 @@ output * bg ~/.config/sway/wallpaper.jpg fill
 #
 # Example configuration:
 #
-   input "1739:0:Synaptics_TM2722-001" {
+   input type:touchpad {
        dwt enabled
        tap enabled
        natural_scroll disabled
