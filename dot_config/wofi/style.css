@@ -22,7 +22,7 @@ window {
     background-color: rgba(255, 255, 255, 1);
     margin-left: 10px;
     margin-right: 10px;
-    transition: 0.5s ease-in-out;
+    transition: 0.3s ease-in-out;
     border: none;
 }
 /* label {
@@ -35,6 +35,8 @@ window {
 }
 #entry:selected {
     background-color: rgba(255, 255, 255, 1);
-    color: rgba(0,0,0,1);
     transition: none;
+}
+#text:selected {
+    color: rgba(0,0,0,1);
 }
