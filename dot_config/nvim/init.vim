@@ -4,21 +4,26 @@ call plug#begin('~/.vim/plugged')
 """""""""" On-demand loading
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 
+""""""""""""""Status Line""""""""""""""
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
-""""""""""""""" Colorscheme """"""""""""
+""""""""""""""" Colorscheme""""""""""""
 Plug 'joshdick/onedark.vim'
 "Plug 'dracula/vim', { 'as': 'dracula' }
 "Plug 'tomasiser/vim-code-dark'
+"
+""""Language Pack
 Plug 'sheerun/vim-polyglot'
+
 """"""""""" Plugin outside ~/.vim/plugged with post-update hook
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-""""""""""" deoplete """"""""""""""
+
+"""""""""""deoplete for LSP completion""""""""""""""
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
-""""""""""Snippets for LanguageClient-neovim
+""""""""""Snippets support for LanguageClient-neovim
 Plug 'SirVer/ultisnips'
 
 """""""""""LSP Client""""""""""""
@@ -61,6 +66,7 @@ let g:LanguageClient_serverCommands = {
     \ 'tex': ['~/Latex/texlab'],
     \ }
 
+" LSP Syntax highlighting
 let g:LanguageClient_semanticHighlightMaps = {}
 let g:LanguageClient_semanticHighlightMaps['java'] = {
     \ '^storage.modifier.static.java:entity.name.function.java': 'JavaStaticMemberFunction',
@@ -78,13 +84,13 @@ hi! JavaStaticMemberFunction ctermfg=Green cterm=none guifg=Green gui=none
 hi! JavaMemberVariable ctermfg=White cterm=italic guifg=White gui=italic
 
 " Disable message in right side
-" of code when
+" of code when there's error/warning
 let g:LanguageClient_useVirtualText='No'
 
-""""""""""End of configuration for LanguageClient-neovim
+""""""""""End of configuration for LanguageClient-neovim""""""""""""""
 
-"""""""""""Ultisnips conf
-"needed for better integration with LSP
+"""""""""""Ultisnips conf""""""""""""""""""""
+" for better integration with LSP
 let g:ulti_expand_res = 0 "default value, just set once
 function! CompleteSnippet()
   if empty(v:completed_item)
