@@ -42,17 +42,17 @@ shopt -s histappend
 # Store bash history immediatly (history -a)
 # Up key show local terminal history rather than globally (history -n)
 #export PROMPT_COMMAND='$PROMPT_COMMAND;history -a;history -n'
-export PROMPT_COMMAND='history -a; history -n'
+PROMPT_COMMAND='history -a; history -n'
 
 # CONTROL BASH HISTORY
 # ignorespace = don’t save lines which begin with a <space> character
 # ignoredups = don’t save lines matching the previous history entry
 # ignoreboth = use both ‘ignorespace’ and ‘ignoredups’
 # erasedups = eliminate duplicates across the whole history
-export HISTCONTROL=ignorespace:erasedups
+HISTCONTROL=ignorespace:erasedups
 
 # Ignore specific commands
-export HISTIGNORE="ls:cd:ranger"
+HISTIGNORE='ls *:ls:cd *:cd:ranger *:ranger:rm *:sway *'
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 

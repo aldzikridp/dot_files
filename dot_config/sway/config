@@ -10,6 +10,10 @@ exec '~/.config/sway/pulse-restart.sh'
 # Disable xwayland
 xwayland disable
 
+# Disable focus on mouse
+# hover, since it annoying
+focus_follows_mouse no
+
 ### Variables
 #
 # Font

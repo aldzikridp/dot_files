@@ -18,6 +18,9 @@ Plug 'junegunn/fzf.vim'
 """"""""""" deoplete """"""""""""""
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
+""""""""""Snippets for LanguageClient-neovim
+Plug 'SirVer/ultisnips'
+
 """""""""""LSP Client""""""""""""
 Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
@@ -55,6 +58,7 @@ set signcolumn=yes
 
 let g:LanguageClient_serverCommands = {
     \ 'java': ['~/.config/nvim/jdtls', '-data', getcwd()],
+    \ 'tex': ['~/Latex/texlab'],
     \ }
 
 let g:LanguageClient_semanticHighlightMaps = {}
@@ -79,6 +83,59 @@ let g:LanguageClient_useVirtualText='No'
 
 """"""""""End of configuration for LanguageClient-neovim
 
+"""""""""""Ultisnips conf
+"needed for better integration with LSP
+let g:ulti_expand_res = 0 "default value, just set once
+function! CompleteSnippet()
+  if empty(v:completed_item)
+    return
+  endif
+
+  call UltiSnips#ExpandSnippet()
+  if g:ulti_expand_res > 0
+    return
+  endif
+
+  let l:complete = type(v:completed_item) == v:t_dict ? v:completed_item.word : v:completed_item
+  let l:comp_len = len(l:complete)
+
+  let l:cur_col = mode() == 'i' ? col('.') - 2 : col('.') - 1
+  let l:cur_line = getline('.')
+
+  let l:start = l:comp_len <= l:cur_col ? l:cur_line[:l:cur_col - l:comp_len] : ''
+  let l:end = l:cur_col < len(l:cur_line) ? l:cur_line[l:cur_col + 1 :] : ''
+
+  call setline('.', l:start . l:end)
+  call cursor('.', l:cur_col - l:comp_len + 2)
+
+  call UltiSnips#Anon(l:complete)
+endfunction
+
+autocmd CompleteDone * call CompleteSnippet()
+
+" Trigger configuration. You need to change this to something else than <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+
+""""""""""Vim airline options"""""""""""""
+let g:airline_theme='onedark'
+"""" enable  in tab line
+let g:airline#extensions#tabline#enabled = 1
+"""" enable  in buffer line
+let g:airline#extensions#bufferline#enabled = 1
+""" enable  shape in vim-airline
+let g:airline_powerline_fonts = 1
+
+" Always show the status line (vim-airline is statusline)
+set laststatus=2
+
+" Dont show mode, since I use vim-airline anyway
+set noshowmode
+
 """""""""""""highlight current line"""""""""
 set cursorline
 
@@ -94,15 +151,6 @@ set termguicolors
 
 """""""""numbering type"""""""""
 set relativenumber
-
-""""""""""Vim airline options"""""""""""""
-let g:airline_theme='onedark'
-let g:airline#extensions#tabline#enabled = 1
-""" enable > shape in vim-airline
-let g:airline_powerline_fonts = 1
-
-" Dont show mode, since I use vim-airline anyway
-set noshowmode
 
 " Sets how many lines of history VIM has to remember
 set history=500
@@ -213,8 +261,6 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 """"""""""""""""""""""""""""""
 " => Status line
 """"""""""""""""""""""""""""""
-" Always show the status line (vim-airline is statusline)
-set laststatus=2
 
 " Delete trailing white space on save, useful for some filetypes ;)
 fun! CleanExtraSpaces()
