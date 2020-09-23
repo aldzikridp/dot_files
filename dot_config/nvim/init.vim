@@ -188,8 +188,20 @@ let g:airline#extensions#tabline#right_alt_sep = ''
 """LanguageClient status icon
 let airline#extensions#languageclient#error_symbol = '✖ '
 let airline#extensions#languageclient#warning_symbol = '⚠ '
-let airline#extensions#languageclient#open_lnum_symbol = '  '
+let airline#extensions#languageclient#open_lnum_symbol = ' :'
 let airline#extensions#languageclient#close_lnum_symbol = ' '
+
+"""Status Icon
+let g:airline_symbols = {
+          \ 'readonly': "\ue0a2",
+          \ 'whitespace': "\u2632",
+          \ 'linenr': "\u2630 ",
+          \ 'maxlinenr': " ",
+          \ 'branch': "\ue0a0",
+          \ 'notexists': "\u0246",
+          \ 'dirty': "\u26a1",
+          \ 'crypt': nr2char(0x1F512),
+          \ }
 
 " Always show the status line (vim-airline is statusline)
 set laststatus=2
