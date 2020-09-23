@@ -1,5 +1,15 @@
+"""""""""""Install vim-plug if it's not installed""""""""""
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 """""""""""""Put plugin below"""""""""""""""""""""""""""
 call plug#begin('~/.vim/plugged')
+
+"""""""""""Git integration
+Plug 'jreybert/vimagit'
+Plug 'tpope/vim-fugitive'
 
 """""""""" On-demand loading
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
@@ -87,6 +97,34 @@ hi! JavaMemberVariable ctermfg=White cterm=italic guifg=White gui=italic
 " of code when there's error/warning
 let g:LanguageClient_useVirtualText='No'
 
+" Sign text config
+let g:LanguageClient_diagnosticsDisplay = {
+    \     1: {
+    \         "name": "Error",
+    \         "texthl": "ALEError",
+    \         "signText": "✖",
+    \         "signTexthl": "ErrorMsg",
+    \     },
+    \     2: {
+    \         "name": "Warning",
+    \         "texthl": "ALEWarning",
+    \         "signText": "⚠",
+    \         "signTexthl": "WarningMsg",
+    \     },
+    \     3: {
+    \         "name": "Information",
+    \         "texthl": "ALEInfo",
+    \         "signText": "ℹ",
+    \         "signTexthl": "ALEInfoSign",
+    \     },
+    \     4: {
+    \         "name": "Hint",
+    \         "texthl": "ALEInfo",
+    \         "signText": "➤",
+    \         "signTexthl": "ALEInfoSign",
+    \     },
+    \ }
+
 """"""""""End of configuration for LanguageClient-neovim""""""""""""""
 
 """""""""""Ultisnips conf""""""""""""""""""""
@@ -129,12 +167,29 @@ let g:UltiSnipsEditSplit="vertical"
 
 """"""""""Vim airline options"""""""""""""
 let g:airline_theme='onedark'
-"""" enable  in tab line
+"""" enable airline in tab line
 let g:airline#extensions#tabline#enabled = 1
-"""" enable  in buffer line
+""" Path formatter
+let g:airline#extensions#tabline#formatter = 'unique_tail'
+"""" enable airline in buffer line
 let g:airline#extensions#bufferline#enabled = 1
-""" enable  shape in vim-airline
+""" Use powerline fonts
 let g:airline_powerline_fonts = 1
+"""Separator (NerdFont)
+let g:airline_left_sep=''
+let g:airline_right_sep=''
+let g:airline_left_alt_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline#extensions#tabline#left_sep = ''
+let g:airline#extensions#tabline#right_sep = ''
+let g:airline#extensions#tabline#left_alt_sep = ''
+let g:airline#extensions#tabline#right_alt_sep = ''
+
+"""LanguageClient status icon
+let airline#extensions#languageclient#error_symbol = '✖ '
+let airline#extensions#languageclient#warning_symbol = '⚠ '
+let airline#extensions#languageclient#open_lnum_symbol = '  '
+let airline#extensions#languageclient#close_lnum_symbol = ' '
 
 " Always show the status line (vim-airline is statusline)
 set laststatus=2
@@ -178,12 +233,7 @@ set so=7
 set wildmenu
 
 " Ignore compiled files
-set wildignore=*.o,*~,*.pyc,*.class
-if has("win16") || has("win32")
-    set wildignore+=.git\*,.hg\*,.svn\*
-else
-    set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
-endif
+set wildignore+=*.o,*~,*.pyc,*.class,*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store,*/bin/*
 
 "Always show current position
 set ruler

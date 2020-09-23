@@ -228,7 +228,8 @@ gaps outer 0
 
 #Set color for titlebar (titlebar always appear when in tabbed and stacked mode)
 client.focused #FFFFFFFF #FFFFFFFF #000000FF #FFFFFFFF
-client.focused_inactive #FFFFFFB3 #FFFFFFB3 #000000FF #FFFFFFB3
+#client.focused_inactive #FFFFFFB3 #FFFFFFB3 #000000FF #FFFFFFB3
+client.focused_inactive #000000B3 #000000B3 #FFFFFFFF #000000B3
 client.unfocused #000000B3 #000000B3 #FFFFFF66 #000000B3
 
 #Set float on pavucontrol
