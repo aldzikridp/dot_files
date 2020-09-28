@@ -44,9 +44,22 @@ Plug 'autozimu/LanguageClient-neovim', {
 """""""""""" Always put vim-devicons as last loaded plugin
 Plug 'ryanoasis/vim-devicons'
 call plug#end()
+""""""""""""Enable syntax highlighting"""""""""
+"Always set at first before other
+"color/highlight set, so the settings
+"will not overwritten
+syntax on
+
+"""""""""""""Colorscheme settings""""""""""""""
+colorscheme onedark
+set termguicolors
 
 """"""""""""Enable deoplete"""""""""
 let g:deoplete#enable_at_startup = 1
+
+""""""""""""NERDTree conf
+""Change root to current directory
+let g:NERDTreeChDirMode = 3
 
 """""""""""""""""option for LanguageClient-neovim"""""""""""""
 function SetLSPShortcuts()
@@ -71,8 +84,9 @@ augroup END
 " Always show column for LSP sign
 set signcolumn=yes
 
+    "\ 'java': ['~/.config/nvim/jdtls', '-data', getcwd()],
 let g:LanguageClient_serverCommands = {
-    \ 'java': ['~/.config/nvim/jdtls', '-data', getcwd()],
+    \ 'java': ['~/.config/nvim/jdtls'],
     \ 'tex': ['~/Latex/texlab'],
     \ }
 
@@ -90,8 +104,8 @@ let g:LanguageClient_semanticHighlightMaps['java'] = {
     \ '^storage.type.generic.java': 'Type',
     \ }
 
-hi! JavaStaticMemberFunction ctermfg=Green cterm=none guifg=Green gui=none
-hi! JavaMemberVariable ctermfg=White cterm=italic guifg=White gui=italic
+hi! link JavaStaticMemberFunction javaScriptRequire
+hi! link JavaMemberVariable htmlH1
 
 " Disable message in right side
 " of code when there's error/warning
@@ -101,27 +115,27 @@ let g:LanguageClient_useVirtualText='No'
 let g:LanguageClient_diagnosticsDisplay = {
     \     1: {
     \         "name": "Error",
-    \         "texthl": "ALEError",
+    \         "texthl": "Underlined",
     \         "signText": "✖",
     \         "signTexthl": "ErrorMsg",
     \     },
     \     2: {
     \         "name": "Warning",
-    \         "texthl": "ALEWarning",
+    \         "texthl": "Underlined",
     \         "signText": "⚠",
     \         "signTexthl": "WarningMsg",
     \     },
     \     3: {
     \         "name": "Information",
-    \         "texthl": "ALEInfo",
+    \         "texthl": "Underlined",
     \         "signText": "ℹ",
-    \         "signTexthl": "ALEInfoSign",
+    \         "signTexthl": "Question",
     \     },
     \     4: {
     \         "name": "Hint",
-    \         "texthl": "ALEInfo",
+    \         "texthl": "Underlined",
     \         "signText": "➤",
-    \         "signTexthl": "ALEInfoSign",
+    \         "signTexthl": "Normal",
     \     },
     \ }
 
@@ -215,13 +229,6 @@ set cursorline
 """"""""""""enable mouse"""""""""""""""
 set mouse=a
 
-""""""""""""Enable syntax highlighting"""""""""
-syntax on
-
-"""""""""""""Colorscheme settings""""""""""""""
-colorscheme onedark
-set termguicolors
-
 """""""""numbering type"""""""""
 set relativenumber
 
@@ -238,8 +245,8 @@ set autoread
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Set 7 lines to the cursor - when moving vertically using j/k
-set so=7
+" Set 5 lines to the cursor - when moving vertically using j/k
+set so=5
 
 " Turn on the Wild menu for autocompletion/suggestion in command
 set wildmenu
