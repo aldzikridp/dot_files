@@ -1,6 +1,6 @@
 [mpd]
 mpd_music_dir = "~/Music"
-mpd_host = "/tmp/mpd.socket"
+mpd_host = "/tmp/mpd_socket"
 mpd_crossfade_time = "2"
 
 [visualizer]

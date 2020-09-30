@@ -14,7 +14,7 @@
     },
     "mpd": {
         "format": "{stateIcon}",
-        "server": "/tmp/mpd.socket",
+        "server": "/tmp/mpd_socket",
         "format-disconnected": "",
         "format-stopped": " ",
         "unknown-tag": "N/A",

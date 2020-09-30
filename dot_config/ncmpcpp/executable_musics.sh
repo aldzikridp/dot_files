@@ -18,7 +18,7 @@ kitty @ send-text \
 
 function get_cover() {
     music_dir="$HOME/Music/"
-    mpd_host="/tmp/mpd.socket"
+    mpd_host="/tmp/mpd_socket"
     current_music="$(mpc --host="$mpd_host" --format %file% current)"
     current_music_dir="$music_dir$(dirname "$current_music")"
 
