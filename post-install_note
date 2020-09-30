@@ -3,6 +3,10 @@ After install fresh fedora system on AMD APU, turn on iommu and run
 command above is used to add argument to add iommu=pt to kernel
 parameter, since without it, glitch on display may appear
 
+#grubby --update-kernel=ALL --args=snd_hda_intel.dmic_detect=0
+run command above if pulseaudio only show dummy output 
+(it happen when using sway)
+
 clone this repo
 git clone https://github.com/lincheney/fzf-tab-completion ~/.fzf-tab-completion
 git clone --depth=1 https://github.com/Bash-it/bash-it.git ~/.bash_it
