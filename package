@@ -1,11 +1,12 @@
+ImageMagick
 NetworkManager-openvpn
+NetworkManager-openvpn-gnome
 NetworkManager-tui
 NetworkManager-wifi
 brightnessctl
-firefox
 ffmpeg
+firefox
 htop
-ImageMagick
 imv
 iwl7260-firmware
 jq
@@ -18,6 +19,7 @@ mpd
 mpv
 ncmpcpp
 neovim
+network-manager-applet
 nodejs
 pavucontrol
 pulseaudio
