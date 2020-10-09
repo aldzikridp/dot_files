@@ -6,6 +6,8 @@ NetworkManager-wifi
 brightnessctl
 ffmpeg
 firefox
+gnome-keyring
+gnome-keyring-pam
 htop
 imv
 iwl7260-firmware
@@ -22,12 +24,14 @@ neovim
 network-manager-applet
 nodejs
 pavucontrol
+polkit-gnome
 pulseaudio
 pulseaudio-utils
 python3-neovim
 python3-pillow
 ranger
 rpmconf
+seahorse
 slurp
 sway
 swayidle
