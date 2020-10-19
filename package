@@ -1,14 +1,11 @@
-ImageMagick
-NetworkManager-openvpn
-NetworkManager-openvpn-gnome
-NetworkManager-tui
-NetworkManager-wifi
 brightnessctl
+fd-find
 ffmpeg
-firefox
 gnome-keyring
 gnome-keyring-pam
+gnome-settings-daemon
 htop
+ImageMagick
 imv
 iwl7260-firmware
 jq
@@ -22,7 +19,10 @@ mpv
 ncmpcpp
 neovim
 network-manager-applet
-nodejs
+NetworkManager-openvpn
+NetworkManager-openvpn-gnome
+NetworkManager-tui
+NetworkManager-wifi
 pavucontrol
 polkit-gnome
 pulseaudio
@@ -30,6 +30,7 @@ pulseaudio-utils
 python3-neovim
 python3-pillow
 ranger
+ripgrep
 rpmconf
 seahorse
 slurp
