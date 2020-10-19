@@ -55,10 +55,9 @@ HISTCONTROL=ignorespace:erasedups
 HISTIGNORE='ls *:ls:cd *:cd:ranger *:ranger:rm *:sway *:clear *'
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-#export FZF_DEFAULT_COMMAND="fd ."
-export FZF_DEFAULT_COMMAND="rg --files"
+export FZF_DEFAULT_COMMAND="fd -I -H -L 2>/dev/null"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_ALT_C_COMMAND="fd -I -H -L -t d ."
+export FZF_ALT_C_COMMAND="fd -I -H -L -t d . 2>/dev/null"
 
 source ~/.fzf-tab-completion/bash/fzf-bash-completion.sh
 bind -x '"\t": fzf_bash_completion'

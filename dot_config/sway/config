@@ -3,12 +3,13 @@
 exec mako
 exec udiskie
 exec mpd
+exec nm-applet --indicator
 # Pulse usually doesn't detect plugged headphone
 # so config file must deleted and run pulse
 #exec '~/.config/sway/pulse-restart.sh'
 
 # Disable xwayland
-xwayland disable
+#xwayland disable
 
 # Disable focus on mouse
 # hover, since it annoying
@@ -241,6 +242,7 @@ for_window [app_id="keepassxc"] floating enable
 for_window [app_id="mpv"] floating enable
 for_window [app_id="termfloat"] floating enable
 for_window [app_id="xdg-desktop-portal-gtk"] floating enable
+for_window [app_id="nm-connection-editor"] floating enable
 
 # Using pulseaudio-utils (append "-s $sinkname" without quotes to override default sink)
 
