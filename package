@@ -1,3 +1,4 @@
+bat
 brightnessctl
 fd-find
 ffmpeg
@@ -11,6 +12,7 @@ iwl7260-firmware
 jq
 kitty
 libnotify
+make
 mako
 mesa-dri-drivers
 mpc
