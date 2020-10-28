@@ -13,6 +13,7 @@ jq
 kitty
 libnotify
 make
+starship
 mako
 mesa-dri-drivers
 mpc
