@@ -22,10 +22,9 @@ function get_cover() {
     current_music="$(mpc --host="$mpd_host" --format %file% current)"
     current_music_dir="$music_dir$(dirname "$current_music")"
 
-    cover_found="$(find "$current_music_dir/" -iname "cover*" | wc -l)"
-    if [[ $cover_found -gt 0 ]]
+    COVER="$(fd -e png -e jpg cover -1 "$current_music_dir")"
+    if [[ -n $COVER ]]
     then
-        COVER="$(find "$current_music_dir/" \( -iname "cover*.png" -o -iname "cover*.jpg" \) | head -n 1)"
         return 0
     fi
 
