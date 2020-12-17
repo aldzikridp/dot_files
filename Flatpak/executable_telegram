@@ -1,2 +1,0 @@
-#!/usr/bin/sh
-exec /usr/bin/flatpak run --socket=wayland org.telegram.desktop
