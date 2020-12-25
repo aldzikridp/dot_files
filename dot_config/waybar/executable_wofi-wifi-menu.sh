@@ -7,13 +7,6 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 FIELDS=SSID,SECURITY
 
-if [ -r "$DIR/config" ]; then
-	source "$DIR/config"
-elif [ -r "$HOME/.config/wofi/wifi" ]; then
-	source "$HOME/.config/wofi/wifi"
-else
-	echo "WARNING: config file not found! Using default values."
-fi
 
 LIST=$(nmcli --fields "$FIELDS" device wifi list | sed '/^--/d')
 # For some reason wofi always approximates character width 2 short... hmmm
