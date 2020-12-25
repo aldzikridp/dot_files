@@ -5,7 +5,7 @@
     // Choose the order of the modules
     "modules-left": ["tray", "sway/mode"],
     "modules-center": ["sway/workspaces"],
-    "modules-right": ["mpd", "idle_inhibitor", "pulseaudio", "network", "network#openvpn", "battery", "clock"],
+    "modules-right": ["mpd", "idle_inhibitor", "pulseaudio", "network", "custom/vpn", "battery", "clock"],
      "sway/window": {
         "max-length": 35
      },
@@ -97,6 +97,15 @@
         "interface": "tun0", // (Optional) To force the use of this interface
         "format": "VPN ",
         "format-disconnected": "VPN ",
+        "on-click": "~/.config/waybar/vpn.sh"
+    },
+    "custom/vpn": {
+        "interval": 5,
+        "tooltip-format": "{tooltip}",
+        "return-type": "json",
+        "format": "VPN {icon}",
+        "format-icons": ["",""],
+        "exec": "$HOME/.config/waybar/vpn-status.sh",
         "on-click": "~/.config/waybar/vpn.sh"
     },
     "pulseaudio": {
