@@ -12,7 +12,7 @@ function connect_vpn() {
     then
         notify-send "Connection to VPN successful" "Connected to $SELECT_VPN"
     else
-        notify-send "Connection to VPN failed" "Connectin attempt to $SELECT_VPN failed"
+        notify-send "Connection to VPN failed" "Connection attempt to $SELECT_VPN failed"
     fi
     return 0
 }
