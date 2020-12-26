@@ -3,8 +3,7 @@
 exec mako
 exec udiskie
 exec mpd
-exec nm-applet --indicator
-exec aria2c --enable-rpc
+exec aria2c --enable-rpc -D
 # Pulse usually doesn't detect plugged headphone
 # so config file must deleted and run pulse
 #exec '~/.config/sway/pulse-restart.sh'
