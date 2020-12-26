@@ -6,7 +6,14 @@ PASSWD_FILE="$HOME/passwd"
 
 function connect_vpn() {
     SELECT_VPN="$(nmcli con | grep -i vpn | awk '!($2=$3=$4="")' | wofi --show dmenu)"
+    notify-send "Connecting VPN" "Connecting to $SELECT_VPN"
     nmcli connection up $SELECT_VPN passwd-file $PASSWD_FILE &> /dev/null
+    if [[ $? -eq 0 ]]
+    then
+        notify-send "Connection to VPN successful" "Connected to $SELECT_VPN"
+    else
+        notify-send "Connection to VPN failed" "Connectin attempt to $SELECT_VPN failed"
+    fi
     return 0
 }
 
