@@ -1,5 +1,5 @@
-max-visible=2
-default-timeout=5000
+max-visible=3
+default-timeout=15000
 anchor=top-center
 font=Comfortaa 10
 background-color=#000000AA
