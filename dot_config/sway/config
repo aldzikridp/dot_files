@@ -12,7 +12,7 @@ exec aria2c --enable-rpc &> /dev/null
 #xwayland disable
 
 # Enable FreeSync
-output HDMI-A-1 adaptive_sync on
+#output HDMI-A-1 adaptive_sync on
 
 # Disable focus on mouse
 # hover, since it annoying
@@ -223,6 +223,9 @@ bindsym $mod+r mode "resize"
 #lock screen
 bindsym $mod+Ctrl+l exec ~/.config/sway/lock.sh
 
+# Sleep
+bindsym $mod+Ctrl+s exec "bash -c 'gpg-connect-agent reloadagent /bye>/dev/null; systemctl suspend; ~/.config/sway/lock.sh; gpg-connect-agent updatestartuptty /bye > /dev/null'"
+
 # Launch neovim
 bindsym $mod+Shift+v exec $term -o background_opacity=1 nvim
 
@@ -268,7 +271,7 @@ bindsym Print exec grim -g "$(slurp)" ~/Pictures/$(date +'%Y-%m-%d-%H%M%S_Screen
 
 ## Screenrecord
 bindsym Ctrl+Print exec wf-recorder --audio -f ~/Videos/$(date +"%Y-%m-%d_%H:%M:%S_Screenrecord.mp4")
-bindsym Ctrl+Shift+Print exec wf-recorder -g "$$(slurp)" -f ~/Videos/$(date +"%Y-%m-%d_%H:%M:%S_Screenrecord.mp4")
+bindsym Ctrl+Shift+Print exec wf-recorder --audio -g "$$(slurp)" -f ~/Videos/$(date +"%Y-%m-%d_%H:%M:%S_Screenrecord.mp4")
 bindsym Ctrl+Shift+BackSpace exec killall -s SIGINT wf-recorder
 
 bar {

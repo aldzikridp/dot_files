@@ -18,7 +18,7 @@ export PATH
 # User specific aliases and functions
 
 NPM_PKG="$HOME/.npm-packages"
-JAVA_HOME="$HOME/Java/jdk-15"
+JAVA_HOME="$HOME/.javabin"
 LATEX="$HOME/Latex/2020"
 PATH="$HOME/.flatpak:$JAVA_HOME/bin:$LATEX/bin/x86_64-linux:$NPM_PKG/bin:$PATH"
 export MANPATH="${MANPATH-$(manpath)}:$NPM_PKG/share/man"
@@ -57,6 +57,10 @@ HISTCONTROL=ignorespace:erasedups
 
 # Ignore specific commands
 HISTIGNORE='ls *:ls:cd *:cd:ranger *:ranger:rm *:sway *:clear *'
+
+# Specify how ssh access the gpg-agent
+export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+gpgconf --launch gpg-agent
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 export FZF_DEFAULT_COMMAND="fd -I -H -L 2>/dev/null"

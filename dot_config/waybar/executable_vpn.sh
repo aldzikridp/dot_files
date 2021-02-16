@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# Add vpn with nmcli import
+# Then nmcli connection modify VPNNAME autoconnect no
+# Then nmcli connection modify VPNNAME +vpn.data username=VPNUSERNAME
+# Then nmcli connection modify VPNNAME -vpn.data password-flags
+# Then nmcli connection modify VPNNAME +vpn.data password-flags = 0
 # Create file containing like this line
 # vpn.secrets.password:thisispassword123
 PASSWD_FILE="$HOME/passwd"
@@ -23,6 +28,7 @@ function check_vpn(){
     if [[ -n $CONNECTED_VPN ]]
     then
         nmcli connection down $CONNECTED_VPN
+        notify-send "VPN Disconnected" "Disconnected from $CONNECTED_VPN"
         return 0
     fi
         connect_vpn
