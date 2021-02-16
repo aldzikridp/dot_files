@@ -4,6 +4,7 @@ exec mako
 exec udiskie
 exec mpd
 exec aria2c --enable-rpc &> /dev/null
+exec gpg-connect-agent reloadagent /bye>/dev/null
 # Pulse usually doesn't detect plugged headphone
 # so config file must deleted and run pulse
 #exec '~/.config/sway/pulse-restart.sh'
@@ -221,10 +222,10 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 #lock screen
-bindsym $mod+Ctrl+l exec ~/.config/sway/lock.sh
+bindsym $mod+Ctrl+l exec "bash -c '~/.config/sway/lock.sh; gpg-connect-agent updatestartuptty /bye > /dev/null'"
 
 # Sleep
-bindsym $mod+Ctrl+s exec "bash -c 'gpg-connect-agent reloadagent /bye>/dev/null; systemctl suspend; ~/.config/sway/lock.sh; gpg-connect-agent updatestartuptty /bye > /dev/null'"
+bindsym $mod+Ctrl+s exec "bash -c 'gpg-connect-agent reloadagent /bye>/dev/null; ~/.config/sway/lock.sh; systemctl suspend; gpg-connect-agent updatestartuptty /bye > /dev/null'"
 
 # Launch neovim
 bindsym $mod+Shift+v exec $term -o background_opacity=1 nvim
