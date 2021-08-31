@@ -4,13 +4,12 @@ mpd_host = "/tmp/mpd_socket"
 mpd_crossfade_time = "2"
 
 [visualizer]
-visualizer_fifo_path = "/tmp/mpd.fifo"
+visualizer_data_source = "/tmp/mpd.fifo"
 visualizer_in_stereo = "no"
 visualizer_type = "wave"
 visualizer_output_name = "my_fifo"
 visualizer_look = "│┃"
 visualizer_color = "default"
-visualizer_sync_interval = "10"
 
 [header]
 header_visibility = "no"

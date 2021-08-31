@@ -36,6 +36,11 @@ alias ssh='kitty +kitten ssh'
 # Kitty icat, show image in terminal
 alias icat='kitty +kitten icat'
 
+# Nvim won't load config automatically
+# When installed from master branch 
+# in NixOS
+alias nv='nvim -c "source ~/.config/nvim/init.lua"'
+
 # Set .bash_history size
 export HISTFILESIZE=10000
 

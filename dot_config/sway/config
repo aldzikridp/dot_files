@@ -4,8 +4,8 @@ exec mako
 exec udiskie
 exec mpd
 exec aria2c --enable-rpc &> /dev/null
-exec gpg-connect-agent reloadagent /bye>/dev/null
-exec rclone mount mydrive:Key Key &> /dev/null
+exec rclone mount mydrive:Key Key
+exec /run/current-system/sw/libexec/polkit-gnome-authentication-agent-1
 # Pulse usually doesn't detect plugged headphone
 # so config file must deleted and run pulse
 #exec '~/.config/sway/pulse-restart.sh'
