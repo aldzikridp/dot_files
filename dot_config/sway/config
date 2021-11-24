@@ -3,9 +3,10 @@
 exec mako
 exec udiskie
 exec mpd
-exec aria2c --enable-rpc &> /dev/null
+#exec aria2c --enable-rpc &> /dev/null
 exec rclone mount mydrive:Key Key
-exec /run/current-system/sw/libexec/polkit-gnome-authentication-agent-1
+#exec /run/current-system/sw/libexec/polkit-gnome-authentication-agent-1
+exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
 # Pulse usually doesn't detect plugged headphone
 # so config file must deleted and run pulse
 #exec '~/.config/sway/pulse-restart.sh'
@@ -14,7 +15,7 @@ exec /run/current-system/sw/libexec/polkit-gnome-authentication-agent-1
 #xwayland disable
 
 # Enable FreeSync
-#output HDMI-A-1 adaptive_sync on
+output * adaptive_sync on
 
 # Disable focus on mouse
 # hover, since it annoying
@@ -32,7 +33,7 @@ set $down j
 set $up k
 set $right l
 # Your preferred terminal emulator
-set $term exec kitty
+set $term exec kitty --single-instance
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
