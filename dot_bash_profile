@@ -5,6 +5,11 @@ if [ -f ~/.bashrc ]; then
 	. ~/.bashrc
 fi
 
+if [ -z "$SSH_AUTH_SOCK" ] ; then
+    eval `ssh-agent -s` &> /dev/null
+    ssh-add -q
+fi
+
 # User specific environment and startup programs
 export VISUAL=nvim
 export EDITOR=nvim
