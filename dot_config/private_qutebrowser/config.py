@@ -36,7 +36,13 @@ config.set('content.blocking.adblock.lists', [
     "https://easylist.to/easylist/easyprivacy.txt",
     "https://easylist-downloads.adblockplus.org/fanboy-notifications.txt",
     "https://easylist-downloads.adblockplus.org/fanboy-social.txt",
-    "https://raw.githubusercontent.com/hoshsadiq/adblock-nocoin-list/master/nocoin.txt"
+    "https://secure.fanboy.co.nz/fanboy-cookiemonster.txt",
+    "https://raw.githubusercontent.com/hoshsadiq/adblock-nocoin-list/master/nocoin.txt",
+    "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters.txt",
+    "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/annoyances.txt",
+    "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/privacy.txt",
+    "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/resource-abuse.txt",
+    "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/unbreak.txt"
 ])
 
 default_selectors = config.get('hints.selectors')
