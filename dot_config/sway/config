@@ -101,7 +101,8 @@ smart_borders on
     bindsym $mod+d exec $menu
 
 # Select window
-    bindsym $mod+Tab exec ~/.config/wofi/swytch
+    set $windows $fzf_launcher sh -c \"$HOME/.config/sway/swytch\"
+    bindsym $mod+Tab exec $windows
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
