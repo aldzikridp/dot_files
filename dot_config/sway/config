@@ -42,7 +42,7 @@ set $term exec kitty --single-instance
 
 set $fzf_launcher kitty --config \"$HOME/.config/kitty/fzf-launcher.conf\" --class fzf-launcher --detach
 set $menu $fzf_launcher sh -c \"compgen -c | fzf | xargs -r swaymsg exec\"
-for_window [app_id="fzf-launcher"] focus, floating enabled, border pixel 1
+for_window [app_id="fzf-launcher"] focus, floating enabled, border pixel 0
 
 ### Output configuration
 #
@@ -241,7 +241,7 @@ bindsym $mod+Ctrl+s exec "bash -c 'gpg-connect-agent reloadagent /bye>/dev/null;
 bindsym $mod+Shift+v exec $term -o background_opacity=1
 
 #mpv
-bindsym $mod+m exec "bash -c ~/.config/sway/wofi-mpv.sh"
+#bindsym $mod+m exec "bash -c ~/.config/sway/wofi-mpv.sh"
 
 # Launch ncmpcpp (with some eyecandy obviously)
 bindsym $mod+Shift+m exec kitty -o allow_remote_control=yes -o enabled_layouts=horizontal -o window_border_width=0 -o window_padding_width=3 .config/ncmpcpp/musics.sh
