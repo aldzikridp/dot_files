@@ -1,0 +1,2 @@
+#!/bin/sh
+kitty --config $HOME/.config/kitty/nmtui-launcher.conf --class fzf-launcher --detach sh -c nmtui
