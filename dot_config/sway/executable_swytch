@@ -1,3 +1,0 @@
-#!/bin/sh
-
-swaymsg -t get_tree | jq -r 'recurse(.nodes[]?)|recurse(.floating_nodes[]?)|select(.type=="con"),select(.type=="floating_con")|(.id|tostring)+" "+.app_id+" -> "+.name' | fzf | awk '{print $1}' | xargs -I % sh -c 'swaymsg [con_id=%] focus'
