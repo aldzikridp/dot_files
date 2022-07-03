@@ -1,6 +1,7 @@
 #!/bin/sh
 
 RESP=$(cat <<EOF | fzf
+Lock
 Logout
 Sleep
 Reboot
@@ -9,10 +10,14 @@ EOF
 );
 
 case "$RESP" in
+	Lock)
+		$HOME/.config/sway/lock.sh
+		;;
 	Logout)
 		swaymsg exit
 		;;
 	Sleep)
+		$HOME/.config/sway/lock.sh;
 		systemctl suspend
 		;;
 	Reboot)
