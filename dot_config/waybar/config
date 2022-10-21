@@ -5,7 +5,7 @@
     // Choose the order of the modules
     "modules-left": ["tray", "sway/mode"],
     "modules-center": ["sway/workspaces"],
-    "modules-right": ["mpd", "idle_inhibitor", "pulseaudio", "network", "battery", "clock"],
+    "modules-right": ["mpd", "idle_inhibitor", "pulseaudio", "network", "battery", "temperature", "clock"],
      "sway/window": {
         "max-length": 35
      },
@@ -51,12 +51,13 @@
         "format": "{}% "
     },
     "temperature": {
-        // "thermal-zone": 2,
-        // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+        "thermal-zone": 2,
+        "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
         "critical-threshold": 80,
         // "format-critical": "{temperatureC}°C {icon}",
         "format": "{temperatureC}°C {icon}",
-        "format-icons": ["", "", ""]
+        "interval": 5,
+        "format-icons": ["", "", "", "", ""]
     },
     "backlight": {
         // "device": "acpi_video1",
@@ -83,7 +84,7 @@
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
         "format-wifi": "",
-        "format-ethernet": "",
+        "format-ethernet": "",
         "format-disconnected": "⚠",
         "tooltip-format": "{ifname}: {ipaddr}/{cidr}",
         "on-click": "~/.config/waybar/nmtui"

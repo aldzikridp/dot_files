@@ -1,3 +1,3 @@
 set selection-clipboard clipboard
 set synctex true
-set synctex-editor-command "nvim --server /tmp/nvim_latex.pipe --remote-silent +%{line} %{input}"
+set synctex-editor-command "nvr --remote-silent +%{line} %{input}"
