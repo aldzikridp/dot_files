@@ -67,12 +67,15 @@ if command -v fzf-share >/dev/null; then
   source "$(fzf-share)/key-bindings.bash"
   source "$(fzf-share)/completion.bash"
 fi
+
 export FZF_DEFAULT_COMMAND="fd -I -H -L 2>/dev/null"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="fd -I -H -L -t d . 2>/dev/null"
 
-source ~/.fzf-tab-completion/bash/fzf-bash-completion.sh
-bind -x '"\t": fzf_bash_completion'
+if command -v fzf-tab-bash >/dev/null; then
+  source "$(fzf-tab-bash)"
+  bind -x '"\t": fzf_bash_completion'
+fi
 
 # If not running interactively, don't do anything
 case $- in
