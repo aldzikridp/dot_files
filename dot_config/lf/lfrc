@@ -1,6 +1,12 @@
 # interpreter for shell commands
 set shell sh
 
+set drawbox
+
+set relativenumber
+
+set icons
+
 # set '-eu' options for shell commands
 # These options are used to have safer shell commands. Option '-e' is used to
 # exit on error and option '-u' is used to give error for unset variables.
@@ -21,7 +27,7 @@ set ifs "\n"
 set scrolloff 10
 
 # Use the `dim` attribute instead of underline for the cursor in the preview pane
-set cursorpreviewfmt "\033[7;2m"
+#set cursorpreviewfmt "\033[7;2m"
 
 set previewer ~/.config/lf/lf_kitty_preview
 set cleaner ~/.config/lf/lf_kitty_clean
@@ -36,18 +42,12 @@ map ` !true
 map x $$f
 map X !$f
 
-# dedicated keys for file opener actions
-
-# define a custom 'open' command
-# This command is called when current file is not a directory. You may want to
-# use either file extensions and/or mime types here. Below uses an editor for
-# text files and a file opener for the rest.
-cmd open &set -f; rifle -p 0 $fx
+cmd open &set -f; rifle -c ~/.config/lf/rifle.conf -p 0 $fx
 cmd open-with ${{
     set -f
     rifle -l $fx
     read -p "Open with: " method
-    rifle -p $method $fx
+    rifle -c ~/.config/lf/rifle.conf -p $method $fx
 }}
 
 map o open
