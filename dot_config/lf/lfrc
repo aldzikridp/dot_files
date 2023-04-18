@@ -47,7 +47,7 @@ map ` !true
 map x $$f
 map X !$f
 
-cmd open &set -f; rifle -c ~/.config/lf/rifle.conf -p 0 $fx
+cmd open $set -f; rifle -c ~/.config/lf/rifle.conf -p 0 $fx
 cmd open-with ${{
     set -f
     rifle -l $fx
