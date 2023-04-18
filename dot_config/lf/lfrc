@@ -29,8 +29,13 @@ set scrolloff 10
 # Use the `dim` attribute instead of underline for the cursor in the preview pane
 #set cursorpreviewfmt "\033[7;2m"
 
-set previewer ~/.config/lf/lf_kitty_preview
-set cleaner ~/.config/lf/lf_kitty_clean
+#set previewer ~/.config/lf/lf_kitty_preview
+#set cleaner ~/.config/lf/lf_kitty_clean
+
+set previewer ctpv
+set cleaner ctpvclear
+&ctpv -s $id
+&ctpvquit $id
 
 # use enter for shell commands
 map <enter> shell
