@@ -68,10 +68,17 @@ map a :push %mkdir<space>
 #cmd trash %set -f; mv $fx ~/.trash
 
 # define a custom 'delete' command
-cmd delete ${{
+#cmd delete ${{
+#    set -f
+#    printf "$fx\n"
+#    printf "delete?[y/n]"
+#    read ans
+#    [ "$ans" = "y" ] && rm -rf $fx
+#}}
+cmd delete %{{
     set -f
-    printf "$fx\n"
-    printf "delete?[y/n]"
+    count=$(printf "$fx\n" | wc -l)
+    printf "delete $count selected?[y/n]"
     read ans
     [ "$ans" = "y" ] && rm -rf $fx
 }}
