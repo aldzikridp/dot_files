@@ -1,7 +1,11 @@
 #!/usr/bin/env bash
 
 function get_username() {
-  pass show "$PASS" | rg login: | sed "s/login:\ //" | wl-copy
+  pass show "$PASS" | rg login: | sed "s/^login:\ //" | wl-copy -o --trim-newline
+}
+
+function get_password() {
+  pass show "$PASS" | head -1 | wl-copy -o --trim-newline
 }
 
 PASS=$(fd --regex ".gpg$" --base-directory ~/.password-store/ | sed "s/.gpg$//" | fzf)
@@ -19,7 +23,7 @@ EOF
       get_username
       ;;
     password)
-      pass show -c "$PASS" > /dev/null
+      get_password
       break
       ;;
     *)
