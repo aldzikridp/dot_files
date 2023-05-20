@@ -2,6 +2,8 @@
 IMAGE=/tmp/screen.png
 TEXT=/tmp/locktext.png
 
+pkill gpg-agent
+
 grim -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') /tmp/screen.png
 
 convert /tmp/screen.png -scale 25% -blur 0x2 -scale 400% -fill black -colorize 50% /tmp/screen.png
