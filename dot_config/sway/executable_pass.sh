@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 function get_username() {
-  pass show "$PASS" | rg login: | sed "s/^login:\ //" | wl-copy -o --trim-newline
+  pass show "$PASS" | sed -e '2 !d' -e "s/^login:\ //" | wl-copy -o --trim-newline
 }
 
 function get_password() {
