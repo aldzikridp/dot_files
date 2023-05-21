@@ -4,7 +4,6 @@ exec mako
 exec udiskie
 exec mpd
 #exec aria2c --enable-rpc &> /dev/null
-exec rclone mount mydrive:Key Key
 #exec /run/current-system/sw/libexec/polkit-gnome-authentication-agent-1
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
 # Pulse usually doesn't detect plugged headphone
