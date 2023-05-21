@@ -10,7 +10,7 @@ function get_password() {
 
 PASS=$(fd --regex ".gpg$" --base-directory "$HOME/.password-store/" | sed "s/.gpg$//" | fzf)
 
-while true;
+while [ -n "$PASS" ];
 do
 RESP=$(cat <<EOF | fzf
 username
