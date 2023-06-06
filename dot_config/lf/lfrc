@@ -114,6 +114,12 @@ cmd delete %{{
     [ "$ans" = "y" ] && rm -rf $fx
 }}
 
+cmd dragon %{{
+  dragon --and-exit -A $fx
+}}
+
+map D :dragon
+
 # use '<delete>' key for either 'trash' or 'delete' command
 # map <delete> trash
 map <delete> delete
