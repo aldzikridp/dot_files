@@ -8,7 +8,7 @@ function get_password() {
   pass show "$PASS" | head -1 | wl-copy -o --trim-newline
 }
 
-PASS=$(fd --regex ".gpg$" --base-directory "$HOME/.password-store/" | sed "s/.gpg$//" | fzf)
+PASS="$(find "$HOME/.password-store" -name '*.gpg' -printf "%P\n" | sed "s/.gpg$//" | fzf)"
 
 while [ -n "$PASS" ];
 do
