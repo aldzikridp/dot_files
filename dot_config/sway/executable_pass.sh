@@ -1,32 +1,51 @@
 #!/usr/bin/env bash
 
+PASSWORD_STORE_PATH="${PASSWORD_STORE_DIR:-$HOME/.password-store}"
+WHICH_PATH="$(find "$PASSWORD_STORE_PATH" -maxdepth 1 -type d -exec realpath --relative-to "$PASSWORD_STORE_PATH" {} \; | sed '/^\./d' | fzf)"
+
+if [[ -z $WHICH_PATH ]]; then
+  exit 1
+fi
+
+function lists_password(){ 
+  find "${PASSWORD_STORE_PATH}/${WHICH_PATH}" -name '*.gpg' -exec realpath --relative-to "${PASSWORD_STORE_PATH}" {} \; | sed "s/\.gpg$//" | fzf
+}
+
 function get_username() {
   pass show "$PASS" | sed -e '2 !d' -e "s/^login:\ //" | wl-copy -o --trim-newline
 }
 
-function get_password() {
-  pass show "$PASS" | head -1 | wl-copy -o --trim-newline
+function validate_otp() {
+  pass otp validate "$(pass show $PASS)"
 }
 
-PASS="$(find "$HOME/.password-store" -name '*.gpg' -printf "%P\n" | sed "s/.gpg$//" | fzf)"
+function get_password() {
+  IS_OTP=$(validate_otp)
+  if [[ $IS_OTP -eq 0 ]]; then
+    pass otp "$PASS" | wl-copy -o --trim-newline
+  else
+    pass show "$PASS" | head -1 | wl-copy -o --trim-newline
+  fi
+}
 
-while [ -n "$PASS" ];
-do
+  PASS="$(lists_password)"
+  while [ -n "$PASS" ];
+  do
 RESP=$(cat <<EOF | fzf
 username
 password
 EOF
 );
-
-  case "$RESP" in
-    username)
-      get_username
-      ;;
-    password)
-      get_password
-      break
-      ;;
-    *)
-      exit 1
-  esac
+  
+case "$RESP" in
+  username)
+    get_username
+    ;;
+  password)
+    get_password
+    break
+    ;;
+  *)
+    exit 1
+esac
 done
