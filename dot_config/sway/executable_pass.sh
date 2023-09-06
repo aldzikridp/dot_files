@@ -15,22 +15,18 @@ function get_username() {
   pass show "$PASS" | sed -e '2 !d' -e "s/^login:\ //" | wl-copy -o --trim-newline
 }
 
-function validate_otp() {
-  pass otp validate "$(pass show $PASS)"
-}
-
 function get_password() {
-  IS_OTP=$(validate_otp)
-  if [[ $IS_OTP -eq 0 ]]; then
+  IS_OTP="$(pass show "$PASS" | head -1 | grep '^otpauth:\/\/' | wc -l)"
+  if [[ $IS_OTP -eq 1 ]]; then
     pass otp "$PASS" | wl-copy -o --trim-newline
   else
     pass show "$PASS" | head -1 | wl-copy -o --trim-newline
   fi
 }
 
-  PASS="$(lists_password)"
-  while [ -n "$PASS" ];
-  do
+PASS="$(lists_password)"
+while [ -n "$PASS" ];
+do
 RESP=$(cat <<EOF | fzf
 username
 password
