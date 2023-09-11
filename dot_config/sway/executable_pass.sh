@@ -12,15 +12,15 @@ function lists_password(){
 }
 
 function get_username() {
-  pass show "$PASS" | sed -e '2 !d' -e "s/^login:\ //" | wl-copy -o --trim-newline
+  pass show "$PASS" | sed -e '2 !d' -e "s/^login:\ //" | wl-copy --trim-newline
 }
 
 function get_password() {
   IS_OTP="$(pass show "$PASS" | head -1 | grep '^otpauth:\/\/' | wc -l)"
   if [[ $IS_OTP -eq 1 ]]; then
-    pass otp "$PASS" | wl-copy -o --trim-newline
+    pass otp "$PASS" | wl-copy --trim-newline
   else
-    pass show "$PASS" | head -1 | wl-copy -o --trim-newline
+    pass show "$PASS" | head -1 | wl-copy --trim-newline
   fi
 }
 
