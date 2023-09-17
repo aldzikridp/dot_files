@@ -85,7 +85,7 @@
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
         "format-wifi": "",
-        "format-ethernet": "",
+        "format-ethernet": "󰈀",
         "format-disconnected": "⚠",
         "tooltip-format": "{ifname}: {ipaddr}/{cidr}",
         "on-click": "~/.config/waybar/nmtui"

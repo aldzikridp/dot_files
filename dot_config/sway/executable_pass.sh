@@ -16,15 +16,16 @@ function get_username() {
 }
 
 function get_password() {
-  IS_OTP="$(pass show "$PASS" | head -1 | grep '^otpauth:\/\/' | wc -l)"
-  if [[ $IS_OTP -eq 1 ]]; then
-    pass otp "$PASS" | wl-copy --trim-newline
-  else
-    pass show "$PASS" | head -1 | wl-copy --trim-newline
-  fi
+  pass show "$PASS" | head -1 | wl-copy --trim-newline
 }
 
 PASS="$(lists_password)"
+
+IS_OTP="$(pass show "$PASS" | head -1 | grep '^otpauth:\/\/' | wc -l)"
+if [[ $IS_OTP -eq 1 ]]; then
+  pass otp "$PASS" | wl-copy --trim-newline
+else
+
 while [ -n "$PASS" ];
 do
 RESP=$(cat <<EOF | fzf
@@ -45,3 +46,4 @@ case "$RESP" in
     exit 1
 esac
 done
+fi

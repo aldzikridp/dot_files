@@ -5,13 +5,15 @@ exec udiskie
 exec mpd
 #exec aria2c --enable-rpc &> /dev/null
 #exec /run/current-system/sw/libexec/polkit-gnome-authentication-agent-1
-exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+#exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+exec dbus-sway-environment
 # Pulse usually doesn't detect plugged headphone
 # so config file must deleted and run pulse
 #exec '~/.config/sway/pulse-restart.sh'
+exec udisksctl mount --block-device /dev/disk/by-uuid/34034776-82b2-480f-b0a8-1c0620a25972
 
 # Disable xwayland
-#xwayland disable
+xwayland disable
 
 # Enable FreeSync
 output * adaptive_sync on
