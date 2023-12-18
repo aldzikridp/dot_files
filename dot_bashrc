@@ -36,6 +36,8 @@ alias icat='kitty +kitten icat'
 # in NixOS
 alias nv='nvim -c "source ~/.config/nvim/init.lua"'
 
+alias scan_qr='grim -g "$(slurp)" - | zbarimg PNG:-'
+
 # Set .bash_history size
 export HISTFILESIZE=10000
 
