@@ -13,7 +13,7 @@ exec dbus-sway-environment
 exec udisksctl mount --block-device /dev/disk/by-uuid/34034776-82b2-480f-b0a8-1c0620a25972
 
 # Disable xwayland
-xwayland disable
+#xwayland disable
 
 # Enable FreeSync
 output * adaptive_sync on
